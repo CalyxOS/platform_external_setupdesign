@@ -189,27 +189,17 @@ public final class ThemeHelper {
       return resId;
     }
 
-    boolean isSetupFlow = WizardManagerHelper.isAnySetupWizard(activity.getIntent());
     boolean isDayNightEnabled = isSetupWizardDayNightEnabled(context);
 
-    if (isSetupFlow) {
-      // return theme for inside setup flow
-      resId =
-          isDayNightEnabled
-              ? R.style.SudDynamicColorThemeGlifV3_DayNight
-              : R.style.SudDynamicColorThemeGlifV3_Light;
-    } else {
-      // return theme for outside setup flow
-      resId =
-          isDayNightEnabled
-              ? R.style.SudFullDynamicColorThemeGlifV3_DayNight
-              : R.style.SudFullDynamicColorThemeGlifV3_Light;
-      LOG.atInfo(
-          "Return "
-              + (isDayNightEnabled
-                  ? "SudFullDynamicColorThemeGlifV3_DayNight"
-                  : "SudFullDynamicColorThemeGlifV3_Light"));
-    }
+    resId =
+        isDayNightEnabled
+            ? R.style.SudFullDynamicColorThemeGlifV3_DayNight
+            : R.style.SudFullDynamicColorThemeGlifV3_Light;
+    LOG.atInfo(
+        "Return "
+            + (isDayNightEnabled
+                ? "SudFullDynamicColorThemeGlifV3_DayNight"
+                : "SudFullDynamicColorThemeGlifV3_Light"));
 
     LOG.atDebug(
         "Gets the dynamic accentColor: [Light] "
