@@ -196,26 +196,17 @@ public final class ThemeHelper {
       return resId;
     }
 
-    boolean isSetupFlow = WizardManagerHelper.isAnySetupWizard(activity.getIntent());
     boolean isDayNightEnabled = isSetupWizardDayNightEnabled(context);
 
-    if (isSetupFlow) {
-      // return theme for inside setup flow
-      resId =
-          isDayNightEnabled
-              ? R.style.SudDynamicColorTheme_DayNight
-              : R.style.SudDynamicColorTheme_Light;
-    } else {
-      // return theme for outside setup flow
-      resId =
-          isDayNightEnabled
-              ? R.style.SudFullDynamicColorTheme_DayNight
-              : R.style.SudFullDynamicColorTheme_Light;
-      LOG.atInfo(
-          "Return "
-              + (isDayNightEnabled
-                  ? "SudFullDynamicColorTheme_DayNight"
-                  : "SudFullDynamicColorTheme_Light"));
+    resId =
+        isDayNightEnabled
+            ? R.style.SudFullDynamicColorTheme_DayNight
+            : R.style.SudFullDynamicColorTheme_Light;
+    LOG.atInfo(
+        "Return "
+            + (isDayNightEnabled
+                ? "SudFullDynamicColorTheme_DayNight"
+                : "SudFullDynamicColorTheme_Light"));
     }
 
     LOG.atDebug(
